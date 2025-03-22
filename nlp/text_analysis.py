@@ -5,7 +5,7 @@ def sentiment_analysis():
     result_first = classifier("Hugging Face.")
     result_second = classifier("Hugging Face is the best NLP!")
     result_third = classifier("Hugging Face is the worst NLP!")
-    print(result_first)
+    print(result_first) 
     print(result_second)
     print(result_third)
 

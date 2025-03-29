@@ -8,18 +8,16 @@ from diffusers import StableDiffusionPipeline, UNet2DConditionModel
 from peft import get_peft_model, LoraConfig
 from tqdm import tqdm
 
-# ============ НАСТРОЙКИ ============
 device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
 dtype = torch.float32
 
-dataset_path = "/Users/olgapopova/Desktop/my_dataset"  # путь к UI-дизайнам
+dataset_path = "/Users/olgapopova/Desktop/my_dataset"  
 image_size = 512
 batch_size = 1
 epochs = 5
 lr = 1e-4
 output_dir = "./lora_ui_model"
 
-# ============ ПРЕПРОЦЕССИНГ ============
 transform = transforms.Compose([
     transforms.Resize((image_size, image_size)),
     transforms.ToTensor(),
@@ -29,7 +27,6 @@ transform = transforms.Compose([
 dataset = ImageFolder(dataset_path, transform=transform)
 dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=True)
 
-# ============ PIPELINE И КОМПОНЕНТЫ ============
 pipe = StableDiffusionPipeline.from_pretrained("stabilityai/stable-diffusion-2-1")
 vae = pipe.vae.to(device)
 unet = pipe.unet
@@ -39,7 +36,6 @@ scheduler = pipe.scheduler
 
 unet.to(device, dtype=dtype)
 
-# ============ LoRA КОНФИГ ============
 lora_config = LoraConfig(
     r=16,
     lora_alpha=32,
@@ -50,11 +46,9 @@ lora_config = LoraConfig(
 unet = get_peft_model(unet, lora_config)
 unet.train()
 
-# ============ ОПТИМАЙЗЕР ============
 optimizer = torch.optim.AdamW(unet.parameters(), lr=lr)
 loss_fn = nn.MSELoss()
 
-# ============ ТРЕНИРОВКА ============
 print("\n🚀 Обучение началось!")
 for epoch in range(epochs):
     total_loss = 0
@@ -88,7 +82,6 @@ for epoch in range(epochs):
     avg_loss = total_loss / len(dataloader)
     print(f"\n📉 Loss за эпоху {epoch+1}: {avg_loss:.4f}")
 
-# ============ СОХРАНЕНИЕ ============
 os.makedirs(output_dir, exist_ok=True)
 unet.save_pretrained(output_dir)
 print(f"\n✅ LoRA сохранена в {output_dir}")

@@ -47,7 +47,10 @@ This repository includes the following key workflows:
 ### 1. Clone the repository:
 
 git clone https://github.com/xitrolisax/huggingface-training-repo.git
-cd huggingface-training-repo 2. Install the required dependencies:
+cd huggingface-training-repo
+
+### 2. Install the required dependencies:
+
 bash
 Copy
 pip install -r requirements.txt

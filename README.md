@@ -54,7 +54,8 @@ cd huggingface-training-repo
 bash
 Copy
 pip install -r requirements.txt
-Usage
+
+### Usage
 
 1. UI Generation with Stable Diffusion
    File: generate_ui.py

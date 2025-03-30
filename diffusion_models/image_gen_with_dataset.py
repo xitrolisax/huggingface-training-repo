@@ -49,7 +49,7 @@ unet.train()
 optimizer = torch.optim.AdamW(unet.parameters(), lr=lr)
 loss_fn = nn.MSELoss()
 
-print("\n🚀 Обучение началось!")
+print("\n Обучение началось!")
 for epoch in range(epochs):
     total_loss = 0
     for step, (images, _) in enumerate(tqdm(dataloader, desc=f"Epoch {epoch+1}/{epochs}")):
@@ -80,8 +80,8 @@ for epoch in range(epochs):
         total_loss += loss.item()
 
     avg_loss = total_loss / len(dataloader)
-    print(f"\n📉 Loss за эпоху {epoch+1}: {avg_loss:.4f}")
+    print(f"\n Loss за эпоху {epoch+1}: {avg_loss:.4f}")
 
 os.makedirs(output_dir, exist_ok=True)
 unet.save_pretrained(output_dir)
-print(f"\n✅ LoRA сохранена в {output_dir}")
+print(f"\n LoRA сохранена в {output_dir}")

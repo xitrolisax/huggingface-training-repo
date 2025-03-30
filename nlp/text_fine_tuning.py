@@ -46,7 +46,7 @@ for epoch in range(num_epochs):
         loop.set_description(f"Epoch {epoch}")
         loop.set_postfix(loss=loss.item())
 
-print("✅ Обучение завершено!")
+print("Обучение завершено!")
 
 model.save_pretrained("bert-imdb-model")
 tokenizer.save_pretrained("bert-imdb-model")
@@ -59,4 +59,4 @@ texts = [
 ]
 
 results = classifier(texts)
-print("📌 Тестовые результаты:", results)
+print("Тестовые результаты:", results)

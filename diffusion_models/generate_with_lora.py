@@ -19,6 +19,6 @@ def generate_ui(prompt, steps=40, scale=8.0, out_path="ui_generated.png"):
     image.save(out_path)
     return image
 
-prompt = "cute design"
+prompt = "minimalist website design"
 image = generate_ui(prompt)
 image.show()

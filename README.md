@@ -46,36 +46,34 @@ This repository includes the following key workflows:
 
 ### 1. Clone the repository:
 
-```bash
 git clone https://github.com/xitrolisax/huggingface-training-repo.git
-cd huggingface-training-repo
-2. Install the required dependencies:
+cd huggingface-training-repo 2. Install the required dependencies:
 bash
 Copy
 pip install -r requirements.txt
 Usage
+
 1. UI Generation with Stable Diffusion
-File: generate_ui.py
+   File: generate_ui.py
 
 This script allows you to generate UI designs from a text prompt using a pre-trained Stable Diffusion model fine-tuned with LoRA.
 
 2. Fine-Tuning with LoRA
-File: train_lora.py
+   File: train_lora.py
 
 This script fine-tunes a Stable Diffusion model using your custom dataset with LoRA for more efficient training.
 
 3. ControlNet Integration
-File: controlnet_integration.py
+   File: controlnet_integration.py
 
 This script integrates ControlNet to guide the generation of images based on specific control inputs, such as pose or structure.
 
 4. Sentiment Analysis & Text Classification
-File: sentiment_analysis_and_classification.py
+   File: sentiment_analysis_and_classification.py
 
 This script performs sentiment analysis and text classification using transformer-based models like BERT.
 
 5. Text Generation with GPT-2
-File: text_generation_with_gpt2.py
+   File: text_generation_with_gpt2.py
 
 This script uses a pre-trained GPT-2 model to generate text based on a given prompt.
-```
